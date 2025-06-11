@@ -1,0 +1,1199 @@
+-- SQL
+-------
+-- Structured query language
+-- SSMS / Microsoft / SQL server management studio -- It is a tool.
+-- SSMS is a tool used to interact with SQL server (database) by using SQL language.
+
+-- Advantages of database:
+-- We can store huge amount of data.
+-- We can access data quickly, in less time we can fetch more data.
+-- No duplicates.
+-- Accuracy of data is maintained.
+-- Error chances are zero.
+-- We can join multiple tables and fetch the data.
+
+-- Different types of database:
+-- SQL server -- Microsoft
+-- Oracle
+-- MySQL
+-- Teradata
+-- Amazon -- Redshift
+-- Snowflake
+
+
+-- SQL is not a case sensitive language.
+
+-- Colors:
+-- Green -- comments
+-- Pink -- functions
+-- Blue -- Keywords
+
+-- Two types of types:
+-- Single line comments (--)
+-- Multiple line comments (/* ------ */)
+
+/* 
+colors
+green
+pink
+blue
+*/
+
+-- Data types of SQL:
+-- Types of data of an column can hold is know data type.
+
+-- 1. Numeric data type:
+-- 2. Approximate numeric data type:
+-- 3. String / characters data type:
+-- 4. Date and time data type:
+
+-- 1. Numeric data type:
+-- 1) BIT :
+-- It will store value 0 or 1.
+
+-- 2) TINYINT:
+-- It will store value ranging from 0 to 255.
+
+-- 3) SMALLINT:
+-- It will store value ranging from -32768 to 32767.
+
+-- 4) INT:
+-- It will store value ranging from -2147483648 to 2147483647.
+
+-- 5) BIGINT
+-- It will store value greeter than INT data type.
+
+-- 6) DECIMAL:
+-- It will store decimal types of values.
+
+
+-- 2. Approximate numeric data type:
+-- 1. FLOAT: It will store value ranging from -1.8e to 37.
+-- 2. REAL: It will store value ranging from -3.4e to 37.
+
+-- 3. String / characters data type:
+-- 1) CHAR
+-- We can store A-Z, a-z, 0-9, special characters.
+-- We can store 8000 characters.
+-- It is the static memory allocation.
+
+-- 2) VARCHAR
+-- We can store A-Z, a-z, 0-9, special characters.
+-- We can store 8000 characters.
+-- It is the dynamic memory allocation.
+
+-- 3) NCHAR
+-- We can store A-Z, a-z, 0-9, special characters.
+-- We can store 4000 characters.
+-- It is the static memory allocation.
+-- We can store special language data.
+
+-- 4) NVARCHAR
+-- We can store A-Z, a-z, 0-9, special characters.
+-- We can store 4000 characters.
+-- It is the dynamic memory allocation.
+-- We can store special language data.
+
+-- Interview questions:
+-- What is the diff between char and varchar?
+-- what is the diff between varchar and nvarchar?
+
+-- 4. Date and time data type:
+-- 1) DATE:
+-- We can store date into multiple formats like YYYY/MM/DD, MM/DD/YYYY, MM/DD/YYYY.
+
+-- 2) DATETIME:
+-- We can store time along with date like YYYY/MM/DD HH:MM:SS:MSC.
+
+-- SQL STATEMENTS:
+-- 1. DDL (Data definition language)
+-- 2. DML (Data manipulation language)
+-- 3. DCL (Data control language)
+-- 4. TCL (Transaction control language)
+
+-- 1. DDL (Data definition language)
+-- CREATE, DROP, TRUNCATE, ALTER, RENAME
+
+-- 2. DML (Data manipulation language)
+-- SELECT, UPDATE, INSERT, DELETE
+
+-- How to create a table?
+CREATE TABLE TEST1 (EMPID INT, EMPNAME VARCHAR(10), SALARY INT);
+
+-- SELECT
+-- Select is used to extract / fetch the data from the table.
+-- With using * we can display all the table columns.
+
+SELECT * FROM TEST1;
+SELECT EMPID, EMPNAME FROM TEST1;
+
+-- INSERT:
+-- Method-1
+-- It will allow you to insert the data into the table as per sequence while creating a table.
+
+INSERT INTO TEST1 VALUES(1, 'ADITYA', 50000);
+INSERT INTO TEST1 VALUES(2, 'SATISH'); -- Column name or number of supplied values does not match table definition.
+INSERT INTO TEST1 VALUES('SATISH', 2, 60000); -- Conversion failed when converting the varchar value 'SATISH' to data type int.
+
+-- Method-2
+-- We have to mention the column names and while insert the values follow the order.
+
+INSERT INTO TEST1 (EMPID, EMPNAME) VALUES(2, 'SATISH');
+INSERT INTO TEST1 (EMPNAME, EMPID, SALARY) VALUES('MANISH', 3, 70000);
+
+-- SQL Clauses:
+-- SQL clauses is used to filter out the data by providing conditions.
+-- SQL clauses is used along with sql operators.
+
+-- 1. WHERE CLAUSE
+-- 2. ORDER BY CLAUSE
+-- 3. GROUP BY CLAUSE
+-- 4. HAVING CLAUSE
+
+-- SAMPLE DATA
+create table employee(
+Empcode int,Empfname varchar(125),Emplname varchar (125),Dept varchar(28),Deptcode int,HireDate date,
+Salary bigint,Commission int,Extra_Charge int);
+
+
+INSERT INTO EMPLOYEE  
+VALUES (9369, 'TONY', 'STARK', 'SOFTWARE ENGINEER', 7902, '1980-12-17', 2800,0,20),
+       (9499, 'TIM', 'ADOLF', 'SALESMAN', 7698, '1981-02-20', 1600, 300,30),    
+       (9566, 'KIM', 'JARVIS', 'MANAGER', 7839, '1981-04-02', 3570,0,20),
+       (9654, 'SAM', 'MILES', 'SALESMAN', 7698, '1981-09-28', 1250, 1400, 30),
+       (9782, 'KEVIN', 'HILL', 'MANAGER', 7839, '1981-06-09', 2940,0,10),
+       (9788, 'CONNIE', 'SMITH', 'ANALYST', 7566, '1982-12-09', 3000,0,20),
+       (9839, 'ALFRED', 'KINSLEY', 'PRESIDENT', 7566, '1981-11-17', 5000,0, 10),
+       (9844, 'PAUL', 'TIMOTHY', 'SALESMAN', 7698, '1981-09-08', 1500,0,30),
+       (9876, 'JOHN', 'ASGHAR', 'SOFTWARE ENGINEER', 7788, '1983-01-12',3100,0,20),
+       (9900, 'ROSE', 'SUMMERS', 'TECHNICAL LEAD', 7698, '1981-12-03', 2950,0, 20),
+       (9902, 'ANDREW', 'FAULKNER', 'ANAYLYST', 7566, '1981-12-03', 3000,0, 10),
+       (9934, 'KAREN', 'MATTHEWS', 'SOFTWARE ENGINEER', 7782, '1982-01-23', 3300,0,20),
+       (9591, 'WENDY', 'SHAWN', 'SALESMAN', 7698, '1981-02-22', 500,0,30),
+       (9698, 'BELLA', 'SWAN', 'MANAGER', 7839, '1981-05-01', 3420, 0,30),
+       (9777, 'MADII', 'HIMBURY', 'ANALYST', 7839, '1981-05-01', 2000, 200, NULL),
+       (9860, 'ATHENA', 'WILSON', 'ANALYST', 7839, '1992-06-21', 7000, 100, 50),
+       (9861, 'JENNIFER', 'HUETTE', 'ANALYST', 7839, '1996-07-01', 12000, 100, 50);
+
+select*from Employee
+sp_rename 
+-- 1. WHERE CLAUSE
+-- Where clauses is used to filter out the data by providing conditions.
+
+SELECT * FROM EMPLOYEE;
+
+-- Display salesman dept data?
+SELECT * FROM EMPLOYEE WHERE Dept = 'SALESMAN';
+ select*from employee where emplname='hill'
+
+-- Display records of emp whose salary is greater than 4000?
+SELECT * FROM EMPLOYEE WHERE Salary > 4000;
+
+-- 2. ORDER BY CLAUSE
+-- Order by clause is used to display the values of the column in ASC or DESC order.
+
+SELECT * FROM EMPLOYEE;
+SELECT * FROM EMPLOYEE ORDER BY Salary DESC;
+SELECT * FROM EMPLOYEE ORDER BY Salary ASC;
+SELECT * FROM EMPLOYEE ORDER BY EmpFName ASC;
+
+-- SQL Operators:
+-- 1. Comparison OP
+-- 2. Logical OP
+-- 3. Arithmatic OP
+-- 4. IN and NOT IN OP
+-- 5. Between and not Between OP
+-- 6. Like OP
+
+-- 1. Comparison OP
+-- 1) = equal to
+-- 2) > greater than
+-- 3) < less than
+-- 4) >= greater than equal to
+-- 5) <= less than equal to
+-- 6) <> or != not equal to 
+
+SELECT * FROM EMPLOYEE WHERE Salary = 2000;
+SELECT * FROM EMPLOYEE WHERE Salary > 2000;
+SELECT * FROM EMPLOYEE WHERE Salary < 2000;
+SELECT * FROM EMPLOYEE WHERE Salary >= 2000;
+SELECT * FROM EMPLOYEE WHERE Salary <= 2000;
+SELECT * FROM EMPLOYEE WHERE Salary <> 2000;
+
+-- 2. Logical OP
+-- It is used to compare the condition provided in where clause, two or more than two inputs we can check.
+
+-- 1) AND: Both the conditions needs to be true.
+-- 2) OR: Either one of the condition is true, it will display result for that true condition.
+-- 3) NOT: It is like not equal to OP
+
+-- Display records of emp whose sal is greater than 3000 and dept is manager?
+
+SELECT * FROM EMPLOYEE WHERE Salary > 3000 AND Dept = 'MANAGER';
+SELECT * FROM EMPLOYEE WHERE Salary > 3000 OR Dept = 'MANAGER';
+SELECT * FROM EMPLOYEE WHERE Salary > 3000 AND Dept = 'MANAGER' OR DEPTCODE = 20;
+
+SELECT * FROM EMPLOYEE WHERE Dept <> 'MANAGER';
+SELECT * FROM EMPLOYEE WHERE NOT Dept = 'MANAGER';
+
+-- 3. Arithmetic OP
+-- It is used for calculations.
+-- +, -, *, /
+
+SELECT * FROM EMPLOYEE;
+
+-- Calculate annual salary of the employee?
+
+SELECT *, Salary * 12 FROM EMPLOYEE;
+
+-- Calculate the emp salary which is increased by 10 % ?
+
+SELECT *, Salary * 10/100 FROM EMPLOYEE;
+SELECT *, Salary * 0.44 FROM EMPLOYEE;
+
+-- 4. IN and NOT IN OP
+-- This OP allow you to navigate at specific values into the column.
+
+SELECT * FROM EMPLOYEE WHERE Dept IN ('MANAGER', 'SALESMAN');
+SELECT * FROM EMPLOYEE WHERE Dept NOT IN ('MANAGER', 'SALESMAN');
+SELECT * FROM EMPLOYEE WHERE Dept NOT IN ('MANAGER', 'SALESMAN') AND Salary > 5000;
+SELECT * FROM EMPLOYEE WHERE Dept NOT IN ('MANAGER', 'SALESMAN') OR Salary > 5000;
+
+-- Between and not Between OP
+-- This OP will allow you to display values in range.
+-- This OP is used along with logical OP.
+
+SELECT * FROM EMPLOYEE WHERE Salary BETWEEN 3000 AND 5000;
+SELECT * FROM EMPLOYEE WHERE Salary NOT BETWEEN 3000 AND 5000;
+
+-- 6. Like OP
+-- Like OP will allow you to search patterns from the given string / numbers.
+
+-- Starts with A
+SELECT * FROM EMPLOYEE WHERE EmpFName LIKE 'A%';
+
+-- Ends with A
+SELECT * FROM EMPLOYEE WHERE EmpFName LIKE '%A';
+
+-- Starts with A & K
+SELECT * FROM EMPLOYEE WHERE EmpFName LIKE '[AK]%';
+
+-- Starts with (A-S)
+SELECT * FROM EMPLOYEE WHERE EmpFName LIKE '[A-S]%';
+
+-- Display name of employee who's second last letter ends with A?
+SELECT * FROM EMPLOYEE WHERE EmpFName LIKE '%A_';
+
+-- Second letter starts with A?
+SELECT * FROM EMPLOYEE WHERE EmpFName LIKE '_A%';
+
+SELECT * FROM EMPLOYEE WHERE EmpCode LIKE '99%';
+
+SELECT * FROM EMPLOYEE WHERE EmpFName LIKE '%A%';
+
+-- filename
+-- 978765_DBS_202410.CSV
+-- 070970_ETTS_202410.CSV
+-- 986968_PDS_202412.CSV
+
+--SELECT * FROM TABLE WHERE FILENAME LIKE '%PDS%';
+
+-- SQL Aggregate functions:
+-- SQL aggregate functions return a single value, which is calculated from the value in the column.
+
+-- 1. MAX
+-- 2. MIN
+-- 3. AVG
+-- 4. SUM
+-- 5. COUNT
+
+-- 1. MAX
+-- This function is used to display maximum value from the column.
+
+-- Find out the highest salary?
+
+SELECT MAX(Salary) AS MAX_SAL FROM EMPLOYEE;
+
+SELECT * FROM EMPLOYEE;
+
+SELECT MAX(HireDate)as MAX_HireDate FROM EMPLOYEE
+
+-- 2. MIN
+-- This function is used to display minimum value from the column.
+
+-- Find out the highest salary?
+
+SELECT MIN(Salary) AS MIN_SAL FROM EMPLOYEE;
+
+-- Find out second maximum salary? 
+
+SELECT MAX(Salary) AS SEC_MAX FROM EMPLOYEE WHERE Salary < 12000;
+
+SELECT MAX(Salary) AS SEC_MAX FROM EMPLOYEE WHERE Salary < (SELECT MAX(SALARY) FROM EMPLOYEE);
+
+-- Find out third maximum salary? 
+
+SELECT MAX(Salary) AS THIRD_MAX FROM EMPLOYEE WHERE Salary < (SELECT MAX(Salary) AS SEC_MAX FROM EMPLOYEE WHERE 
+Salary < (SELECT MAX(SALARY) FROM EMPLOYEE));
+
+-- 3. AVG
+-- This function is used to display avg values from the column.
+
+SELECT AVG(SALARY)as avg_sal FROM EMPLOYEE;
+
+-- SALARY -- 1000, 2000, 3000 -- MAX--3000, MIN--1000, AVG --(6000/3) -- 2000
+
+-- 4. SUM
+-- This function is used to return total sum of all numeric values.
+
+-- Find out total salary of the employees?
+
+SELECT SUM(SALARY) FROM EMPLOYEE;
+
+-- 5. COUNT
+-- This function is used to return number of rows.
+
+SELECT COUNT(EmpFName) FROM EMPLOYEE;
+
+SELECT COUNT(*) FROM EMPLOYEE;
+
+SELECT COUNT(EmpCode) FROM EMPLOYEE;
+
+SELECT COUNT(DEPTCODE) FROM EMPLOYEE;
+
+-- 1. DDL (Data definition language)
+-- CREATE, DROP, TRUNCATE, ALTER, RENAME
+
+-- 2. DML (Data manipulation language)
+-- SELECT, UPDATE, INSERT, DELETE
+
+-- CREATE:
+-- Create is used to create database and tables.
+
+-- SELECT:
+-- Select is used to extract / fetch the data from the table.
+-- With using * we can display all the table columns.
+-- We can select specific column by specifying the column names.
+
+-- INSERT:
+-- Method-1
+-- It will allow you to insert the data into the table as per sequence while creating a table.
+
+-- Method-2
+-- We have to mention the column names and while insert the values follow the order.
+
+-- DROP:
+-- Drop is used to delete the database and table along with structure.
+
+-- DROP DATABASE DATA_BASE_NAME;
+
+SELECT * FROM TEST1;
+DROP TABLE TEST1;
+
+-- TRUNCATE:
+-- Truncate is used to delete all the records from the table at once, but it will not delete the structure of the table.
+
+SELECT * FROM Employee;
+TRUNCATE TABLE Employee;
+
+-- ALTER:
+-- Alter is used for many operations.
+-- We can add columns.
+-- We can drop columns.
+-- We can change the data type / size of data type.
+-- We can define constraints to the column.
+
+
+-- add column
+ALTER TABLE TEST ADD DEPT VARCHAR(10);
+
+-- DROP column
+ALTER TABLE TEST DROP COLUMN ID_1;
+
+-- Data type size
+ALTER TABLE TEST ALTER COLUMN DEPT VARCHAR(100);
+
+-- RENAME:
+-- It is used to rename the columns and table columns.
+-- Syntax: SP_RENAME 'OLD_TABLE', 'NEW_TABLE';
+SP_RENAME 'Empfname.CONNIE', 'JACK';
+
+
+SELECT * FROM TEST2;
+
+SP_RENAME 'TEST2.ID', 'EMPID';
+
+-- UPDATE:
+-- This is used to update or modify the existing records from the table.
+
+SELECT * FROM EMPLOYEE;
+
+UPDATE EMPLOYEE SET EMPFNAME='JACKS' WHERE EMPFNAME ='ALFRED' ;
+
+ --DELETE:
+-- This is used to delete the records from the table on row by row basis.
+
+SELECT * FROM TEST2;
+DELETE FROM TEST2; 
+-- OR 
+TRUNCATE TABLE TEST2;
+
+DELETE FROM TEST2 WHERE EMPID = 200; 
+
+-- Interview questions:
+-- What is the diff between drop and truncate?
+-- Drop is used to delete the table along with structure and truncate will delete the records of the table at once,
+-- but it will not delete the structure of the table.
+
+-- What is the diff between DDL and DML?
+-- DDL stands for data definition language, DML Stands for data manipulation language.
+-- DDL plays with the structure of the table and DML plays with the data of the table.
+
+-- What is the diff between delete, drop and truncate?
+-- Delete will delete the records from the on row by row basis, drop is used to delete the table data along with it's structure
+-- and truncate will delete the records of the table at once, but it will not delete the structure of the table.
+
+-- What is the diff between delete and truncate?
+-- Delete will delete the records from the on row by row basis it will not delete the structure of the table, truncate will 
+-- delete the records of the table at once, but it will not delete the structure of the table.
+-- Truncate is much faster than delete.
+
+-- Constraints:
+-- Constraints is used maintain accuracy of the data or table.
+-- Constraints are used to limit the type of data that can goes into the table column.
+
+-- 1. PRIMARY KEY
+-- 2. FOREIGN KEY
+-- 3. NULL KEY
+-- 4. UNIQUE KEY
+-- 5. CHECK KEY
+-- 6. DEFAULT KEY 
+
+-- 1. PRIMARY KEY
+-- PK key constraints does not allow duplicates values into the column and it will not take null values.
+
+CREATE TABLE PK_TEST (ID INT PRIMARY KEY, DEPT VARCHAR(10));
+INSERT INTO PK_TEST VALUES(1,'DEV'),(2,'TEST');
+SELECT * FROM PK_TEST;
+INSERT INTO PK_TEST VALUES(2, 'DEVOPS'); -- Error
+INSERT INTO PK_TEST VALUES(NULL, 'DEVOPS'); -- ERROR column does not allow nulls
+INSERT INTO PK_TEST VALUES(3, 'DEVOPS');
+
+-- 2. Foreign key:
+-- A foreign key in one table points to PK in another table.
+-- Parent table (PK), Child table (FK).
+-- We can insert null values in FK column.
+
+CREATE TABLE DEPT(DEPT_ID INT PRIMARY KEY, DEPT_NAME VARCHAR(10));
+INSERT INTO DEPT VALUES (1, 'HR'),(2, 'FIANANCE'),(3, 'IT');
+
+SELECT * FROM DEPT;
+
+CREATE TABLE EMP (EMPID INT PRIMARY KEY, NAME1 VARCHAR(10), DEPT_ID INT FOREIGN KEY REFERENCES DEPT(DEPT_ID));
+INSERT INTO EMP VALUES (101, 'JOHN', 1); -- John HR dept
+INSERT INTO EMP VALUES (102, 'JANE', 2), -- Finance
+						(103, 'TOM', 3); -- IT
+SELECT * FROM EMP;
+INSERT INTO EMP VALUES (104, 'MIKE', 4); -- Error
+INSERT INTO EMP VALUES (104, 'MIKE', 2);
+INSERT INTO EMP VALUES (105, 'JAY', NULL);
+
+-- 3. NULL KEY
+-- Null key restrict a column not to take null values.
+
+CREATE TABLE NULL_KEY (ID INT NOT NULL, DEPT VARCHAR(100));
+INSERT INTO NULL_KEY VALUES(1, 'TEST'),(2,'DEV');
+INSERT INTO NULL_KEY VALUES (2, 'DEVOPS');
+INSERT INTO NULL_KEY VALUES (NULL, 'IT'); -- Error column does not allow nulls
+
+-- 4. UNIQUE KEY
+-- Unique key only take unique values into the column.
+
+CREATE TABLE UNI_KEY (ID INT UNIQUE, DEPT VARCHAR(100));
+INSERT INTO UNI_KEY VALUES(1, 'TEST'),(2,'DEV');
+INSERT INTO UNI_KEY VALUES (2, 'DEVOPS'); -- Error Cannot insert duplicate key
+INSERT INTO UNI_KEY VALUES (NULL, 'IT');
+
+-- 5. CHECK KEY
+-- Check key constraints are used to restrict or limit the value that can goes into that column.
+
+CREATE TABLE CHE_KEY (ID INT, AGE INT CHECK (AGE>18));
+INSERT INTO CHE_KEY VALUES(1, 19),(2,22),(3,33);
+INSERT INTO CHE_KEY VALUES(4,18); -- Error
+-- 12000, 15000, 11000, , 10000 -- fees >= 10000 -- 9000 error
+
+-- 6. DEFAULT KEY
+-- Default key is used to insert default values into the column.
+
+CREATE TABLE DEF_C (ID INT, CITY CHAR(100) DEFAULT 'MUMBAI');
+-- Method - 1
+INSERT INTO DEF_C VALUES(1, DEFAULT),(2, DEFAULT);
+SELECT * FROM DEF_C;
+
+-- Method - 2
+INSERT INTO DEF_C (ID) VALUES(3),(4),(5),(6);
+SELECT * FROM DEF_C;
+
+-- DISTINCT
+-- How to find unique records from the column? -- By distinct keyword
+
+SELECT * FROM EMPLOYEE ORDER BY Dept;
+
+SELECT DISTINCT DEPT FROM EMPLOYEE;
+UPDATE EMPLOYEE SET DEPT = 'ANALYST' WHERE DEPT = 'ANAYLYST';
+
+-- SQL Clauses:
+-- SQL clauses is used to filter out the data by providing conditions.
+-- SQL clauses is used along with sql operators.
+
+-- 1. WHERE CLAUSE
+-- 2. ORDER BY CLAUSE
+-- 3. GROUP BY CLAUSE
+-- 4. HAVING CLAUSE
+
+-- 3. GROUP BY CLAUSE
+-- Group by clause is used along with aggregate function to group by result set one or more columns.
+
+SELECT * FROM EMPLOYEE ORDER BY DEPT;
+
+-- Find out max salary?
+
+SELECT MAX(SALARY) FROM EMPLOYEE;
+
+-- Find out max salary for each dept?
+
+SELECT DEPT, MAX(SALARY) FROM EMPLOYEE GROUP BY DEPT;
+
+-- Find out min, avg for each dept?
+
+SELECT DEPT, MIN(SALARY), AVG(SALARY) FROM EMPLOYEE GROUP BY DEPT;
+
+-- Find out total salary for each dept?
+
+SELECT DEPT, SUM(SALARY) FROM EMPLOYEE GROUP BY DEPT;
+
+-- Display count for each dept?
+
+SELECT DEPT, count(*) FROM EMPLOYEE GROUP BY DEPT;
+
+SELECT DEPT, DEPTCODE, SUM(SALARY) FROM EMPLOYEE GROUP BY DEPT, DEPTCODE;
+
+-- Having clause:
+-- Having clause is added in sql because we cannot use aggregate function with where clause.
+
+SELECT DEPT, count(*) AS DEPT_COUNT FROM EMPLOYEE GROUP BY DEPT;
+
+-- Display count of each dept, only display dept having more than one employee?
+
+SELECT DEPT, count(*) AS DEPT_COUNT FROM EMPLOYEE GROUP BY DEPT HAVING COUNT(*)>1;
+
+-- Diff between where clause and having clause?
+-- We can use aggregate function with having clause, but we cannot use in where clause.
+-- Where clause comes before group by clause, having clause comes after group by clause.
+
+-- How to find out duplicate records from the table?
+
+SELECT *, count(*) AS DUPLICATE FROM EMPLOYEE GROUP BY EmpCode, EmpFName, EmpLName, DEPT, Manager, HireDate, Salary, 
+Commission, DEPTCODE HAVING COUNT(*)>1;
+
+-- Interview:
+-- SELECT *, COUNT(*) FROM TABLE_NAME GROUP BY COLUMN_NAMES HAVING COUNT(*)>1;
+
+-- How can we check the structure of the tables?
+
+SP_HELP PK_TEST;
+
+-- ****** JOINS ***** VIMP
+-- Join are used to return a value or records from two or more than two tables which should have common column in both the tables.
+
+-- Types of joins:
+-- 1. Inner join
+-- 2. Outer join : a) Left join b) Right join c) Full join
+-- 3. Self join
+-- 4. Equi join
+-- 5. Cross join
+
+-- 1. Inner join:
+-- Inner join will return only matching records from the table.
+
+-- 2. Left join:
+-- It will display all the records from the left table and matching records from the right table
+-- and for non matching records it will display null values.
+
+-- 3. Right join:
+-- It will display all the records from the right table and matching records from the left table
+-- and for non matching records it will display null values.
+
+-- 4. Full join:
+-- It will display all the records from both the tables if it's matching or non matching records,
+-- and for non matching records it will display null values.
+
+CREATE TABLE TABLE_A1 (ID INT, NAME1 CHAR(10), AGE INT);
+INSERT INTO TABLE_A1 VALUES (1,'ALICE',25),(2,'BOB',NULL),(3,'CHARLIE',30);
+INSERT INTO TABLE_A1 VALUES (4,'JAY',29),(5,'ABHI',35);
+
+CREATE TABLE TABLE_B1 (ID INT, DEPT CHAR(10), SAL INT);
+INSERT INTO TABLE_B1 VALUES (1,'HR',50000),(2,'IT',60000),(3,'FIA',70000);
+INSERT INTO TABLE_B1 VALUES (4,'HR',70000),(3,'IT',50000);
+
+SELECT * FROM TABLE_A1;
+SELECT * FROM TABLE_B1;
+
+SELECT TABLE_A1.ID, NAME1, AGE, DEPT, SAL FROM TABLE_A1 INNER JOIN TABLE_B1 ON TABLE_A1.ID = TABLE_B1.ID;
+
+CREATE TABLE A (ID INT);
+CREATE TABLE B (ID INT);
+INSERT INTO A VALUES(1),(1),(2),(2);
+INSERT INTO B VALUES(1),(1),(3),(1);
+INSERT INTO A VALUES(NULL),(NULL);
+INSERT INTO B VALUES(NULL),(NULL),(NULL);
+
+SELECT * FROM A;
+SELECT * FROM B;
+
+SELECT * FROM A INNER JOIN B ON A.ID = B.ID;
+SELECT * FROM A LEFT JOIN B ON A.ID = B.ID;
+SELECT * FROM A RIGHT JOIN B ON A.ID = B.ID;
+SELECT * FROM A FULL JOIN B ON A.ID = B.ID;
+
+-- 3. Self join
+-- Self join combines a table on itself.
+
+CREATE TABLE EMP_DETAILS (EMPID INT PRIMARY KEY, NAME1 CHAR(10), DEPTID  INT, DEPT_ID2 INT);
+INSERT INTO EMP_DETAILS VALUES (1,'AMIT', 101,103),(2,'JAY',102,104),(3,'ROBERT',101,101),(4,'DAVID',103,102),(5,'SHAH',102,106);
+
+SELECT * FROM EMP_DETAILS;
+
+SELECT * FROM EMP_DETAILS E1 INNER JOIN EMP_DETAILS E2 ON E1.DEPTID = E2.DEPT_ID2;
+
+-- 4. Equi join
+-- If you are not joining using join keyword then it's called equi join.
+
+SELECT * FROM TABLE_A1 A INNER JOIN TABLE_B1 B ON A.ID = B.ID;
+
+SELECT * FROM TABLE_A1, TABLE_B1 WHERE TABLE_A1.ID = TABLE_B1.ID;
+
+-- 5. Cross join
+-- It is cartesian product.
+
+CREATE TABLE A1 (ID INT);
+INSERT INTO A1 VALUES (1),(2),(3);
+
+CREATE TABLE A2 (ID INT);
+INSERT INTO A2 VALUES (4);
+INSERT INTO A2 VALUES (5);
+
+SELECT * FROM A1;
+SELECT * FROM A2;
+
+SELECT * FROM A1 CROSS JOIN A2;
+
+-- SET OPERATORS:
+-- UNION
+-- UNION ALL
+-- INTERSECT
+-- EXCEPT / MINUS(ORACLE / SNOWFLAKE)
+
+-- Note:
+-- Each table within union must have same no of columns.
+-- Column should have similar data types.
+-- Table column must be in a same order.
+
+-- Example:
+-- A = [1,2,3,4,5]
+-- B = [3,4,5]
+
+-- A UNION B = OUTPUT = [1,2,3,4,5]
+-- A UNION ALL B = OUTPUT = [1,2,3,4,5,3,4,5]
+-- A INTERSECT B = OUTPUT = [3,4,5]
+
+-- UNION:
+-- Union OP is used to combine result set of two or more tables.
+-- It select distinct records by default.
+
+-- UNION ALL:
+-- Union OP is used to combine result set of two or more tables.
+-- It allows duplicate data as well.
+
+-- INTERSECT:
+-- This will display common / duplicate from the tables.
+
+CREATE TABLE S1 (ID INT, SAL INT);
+INSERT INTO S1 VALUES (1,1500),(2,2000);
+
+CREATE TABLE S2 (ID INT, SAL INT);
+INSERT INTO S2 VALUES (3,3000),(4,4000),(5,5000),(6,6000);
+INSERT INTO S2 VALUES (1,1000),(2,2000);
+
+SELECT * FROM S1;
+SELECT * FROM S2;
+
+SELECT * FROM S1 UNION SELECT * FROM S2;
+SELECT * FROM S1 UNION ALL SELECT * FROM S2;
+SELECT * FROM S1 INTERSECT SELECT * FROM S2;
+
+-- EXCEPT:
+-- It will display the diff between records.
+
+-- A = [1,2,3]
+-- B = [3,4,5,6]
+
+-- A EXCEPT B = OP = [1,2]
+-- B EXCEPT A = OP = [4,5,6]
+
+-- A - [1,2,3], B - [1,2,3] = 0 records
+-- A - 1000 records -- B - 990 records
+
+CREATE TABLE SET3 (ID INT, SAL INT, PIN INT);
+INSERT INTO SET3 VALUES(1, 20000, 400608);
+
+CREATE TABLE SET4 (PIN INT, SAL INT, ID INT);
+INSERT INTO SET4 VALUES(4000603, 40000, 2);
+
+SELECT * FROM SET3;
+SELECT * FROM SET4;
+
+SELECT * FROM SET3 UNION SELECT * FROM SET4;
+SELECT ID, SAL, PIN FROM SET3 UNION SELECT ID, SAL, PIN FROM SET4;
+
+CREATE TABLE SET7 (ID INT, SAL INT, NAME1 VARCHAR(10));
+INSERT INTO SET7 VALUES(1, 20000, 'AMIT');
+
+CREATE TABLE SET8 (ID INT, SAL INT);
+INSERT INTO SET8 VALUES(3, 40000);
+
+SELECT * FROM SET7;
+SELECT * FROM SET8;
+
+SELECT * FROM SET7 UNION SELECT * FROM SET8;
+SELECT ID, SAL, NAME1 FROM SET7 UNION SELECT ID, SAL, NULL FROM SET8;
+
+-- DATE FUNCTIONS:
+-- GETDATE():
+-- This function is used to display current date and time.
+
+SELECT GETDATE();
+
+SELECT GETDATE() - 1;
+
+-- There are 3 more date functions used in SQL to perform date related task.
+-- 1. DATEDIFF():
+-- 2. DATEPART():
+-- 3. DATEADD():
+
+-- 1. DATEDIFF():
+-- DATEDIFF will give you the diff between two dates.
+-- It will take 3 arguments.
+-- Syntax: DATEDIFF(INTERVAL, DATE1/COLUMN, DATE2/COLUMN)
+
+-- How to calculate age?
+SELECT DATEDIFF(YEAR, '1995/05/27', '2025/02/04');
+SELECT DATEDIFF(MONTH, '1995/05/27', '2025/02/04');
+SELECT DATEDIFF(DAY, '1995/05/27', '2025/02/04');
+SELECT DATEDIFF(YEAR, '1995/05/27', GETDATE());
+
+SELECT * FROM EMPLOYEE;
+
+-- Calculate the total exp of the employee?
+
+SELECT *, DATEDIFF(YEAR, HIREDATE, GETDATE()) AS EXP_EMP FROM EMPLOYEE;
+
+-- DATEPART():
+-- This will display the part of the date.
+-- Syntax: DATEPART(INTERVAL, DATE/COLUMN)
+
+SELECT *, DATEPART(YEAR, HIREDATE) AS HIRE_YEAR FROM EMPLOYEE;
+SELECT *, DATEPART(MONTH, HIREDATE) AS HIRE_MONTH FROM EMPLOYEE;
+-- OR
+SELECT *, YEAR(HIREDATE) AS HIRE_YEAR FROM EMPLOYEE;
+
+-- Display records of employees who joined since 1982?
+
+SELECT * FROM EMPLOYEE WHERE DATEPART(YEAR, HIREDATE) >= '1982';
+-- OR
+SELECT * FROM EMPLOYEE WHERE HireDate >= '1982/01/01';
+
+-- Display count of employees hire year wise?
+
+SELECT YEAR(HIREDATE), COUNT(*) FROM EMPLOYEE GROUP BY YEAR(HireDate);
+
+SELECT DEPT, COUNT(*) FROM EMPLOYEE GROUP BY DEPT;
+
+-- Find out employee who joined in previous 35 years?
+
+SELECT * FROM EMPLOYEE WHERE DATEDIFF(YEAR, HIREDATE, GETDATE()) <=35; 
+
+-- DATEADD
+-- It will add dates.
+-- Syntax: DATEADD (INTERVAL, VALUE, DATE/COLUMN)
+
+SELECT DATEADD(YEAR, 2, GETDATE());
+SELECT DATEADD(MONTH, 2, GETDATE());
+
+-- NULL VALUES HANDLE:
+-- ISNULL
+-- COALESCE
+-- CASE
+
+-- ISNULL:
+-- ISNULL function is used to replace null value with user defined value.
+
+SELECT * FROM EMPLOYEE;
+
+SELECT *, ISNULL(DEPTCODE, 70) FROM EMPLOYEE;
+
+UPDATE EMPLOYEE SET DEPTCODE = 70 WHERE DEPTCODE IS NULL;
+
+-- OR
+
+UPDATE EMPLOYEE SET DEPTCODE = ISNULL(DEPTCODE, 70);
+
+-- IS NULL , IS NOT NULL
+
+SELECT * FROM EMPLOYEE WHERE DEPTCODE IS NULL;
+SELECT * FROM EMPLOYEE WHERE DEPTCODE IS NOT NULL;
+
+-- COALESCE
+-- COALESCE function is used to replace null value with user defined value.
+
+SELECT *, COALESCE(DEPTCODE, 70) FROM EMPLOYEE;
+
+-- CASE
+-- Case statement identify the condition and return a value.
+-- If there is no else statement it will return null values.
+
+-- Syntax: CASE WHEN CONDITION THEN RESULT 
+			--		WHEN CONDITION1 THEN RESULT1
+			--		WHEN CONDITION2 THEN RESULT2 ELSE VALUE/COLUMN END;
+			
+CREATE TABLE NULL_CHECK1 (ID INT, CITY CHAR(100));
+INSERT INTO NULL_CHECK1 VALUES(1, 'THANE'), (2, NULL),(3, NULL),(4, 'MUMBAI');
+
+SELECT * FROM NULL_CHECK1;
+
+-- Req -- ID-1 -- TH, id-2 'PUN', ID-3 'HYD' ID-4 'MUM';
+
+SELECT *, CASE WHEN ID = 2 THEN 'PUN' WHEN ID = 3 THEN 'HYD' WHEN ID = 4 THEN 'MUM' WHEN ID = 1 THEN 'TH' ELSE CITY END 
+FROM NULL_CHECK1;
+
+UPDATE NULL_CHECK1 SET CITY = CASE WHEN ID = 2 THEN 'PUN' 
+									WHEN ID = 3 THEN 'HYD' 
+									WHEN ID = 4 THEN 'MUM' 
+									WHEN ID = 1 THEN 'TH' ELSE CITY END;
+
+-- Cognizant:
+-- Country column -- AUSTRALIA, AMERICA, EUROPE, INDIA, JAPAN -- AUS, AMR, EUR, IND, JP -- Try
+
+-- Over clause:
+-- Over clause is used to determine which row has been applied to function.
+-- Function: count, max, min, sum, avg
+-- Ranking functions: Rank, dense_rank, row_number
+-- Over clause combined with Partition by clause (It is like group by clause) and order by clause.
+
+SELECT * FROM EMPLOYEE;
+SELECT DEPT, MAX(SALARY) FROM EMPLOYEE GROUP BY DEPT; -- Aggregated data
+SELECT *, MAX(SALARY) OVER(PARTITION BY DEPT) AS MAX_SAL FROM EMPLOYEE; -- Non-aggregated data
+
+-- Ranking functions:
+-- RANK():
+-- DENSE_RANK():
+-- ROW_NUMBER():
+
+-- It will start ranking starts from 1 based on ordering of rows followed by order by clause.
+-- Order by clause is mandatory.
+-- Partition by clause is optional.
+
+-- What is the diff between Rank, Dense_rank, Row_number?
+-- Rank(): Rank function skips the ranking if there is a same value or number.
+-- Dense_rank(): Dense_rank() will not skip the ranking if there is a same value or number.
+-- Row_number(): It will start ranking from 1.
+
+SELECT *, RANK()OVER(ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE;
+SELECT *, DENSE_RANK()OVER(ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE;
+SELECT *, ROW_NUMBER()OVER(ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE;
+
+-- 5th min salary
+SELECT * FROM (SELECT *, DENSE_RANK()OVER(ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE)TEMP WHERE RNK = 5;
+
+-- 3rd min salary
+SELECT * FROM (SELECT *, DENSE_RANK()OVER(ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE)TEMP WHERE RNK = 3;
+
+-- 5th max salary
+SELECT * FROM (SELECT *, DENSE_RANK()OVER(ORDER BY SALARY DESC) AS RNK FROM EMPLOYEE)TEMP WHERE RNK = 5;
+
+-- Dept wise 2nd max salary
+SELECT * FROM (SELECT *, DENSE_RANK()OVER(PARTITION BY DEPT ORDER BY SALARY DESC) AS RNK FROM EMPLOYEE) TEMP WHERE RNK = 2;
+
+-- Dept wise 2nd min salary
+SELECT * FROM (SELECT *, DENSE_RANK()OVER(PARTITION BY DEPT ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE) TEMP WHERE RNK = 2;
+
+-- CTE (Common table expression):
+-- It is used to store temporary result set which can be used in main query.
+-- Syntax: 
+-- WITH CTE AS
+-- (SQL QUERY)
+-- SELECT / UPDATE / DELETE
+
+-- 5th min salary
+WITH CTE AS
+(SELECT *, DENSE_RANK()OVER(ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE)
+SELECT * FROM CTE WHERE RNK = 5;
+
+-- Dept wise 2nd max salary
+WITH CTE AS
+(SELECT *, DENSE_RANK()OVER(PARTITION BY DEPT ORDER BY SALARY DESC) AS RNK FROM EMPLOYEE) 
+SELECT * FROM CTE WHERE RNK = 2;
+
+-- How to delete duplicate records from the table?
+
+SELECT * FROM EMPLOYEE;
+
+SELECT *, count(*) AS DUPLICATE FROM EMPLOYEE GROUP BY EmpCode, EmpFName, EmpLName, DEPT, Manager, HireDate,Salary, 
+Commission, DEPTCODE HAVING COUNT(*)>1;
+
+WITH DELETE_DUPLICATE AS
+(SELECT *, ROW_NUMBER()OVER(PARTITION BY EmpCode, EmpFName, EmpLName, DEPT, Manager, HireDate,Salary, Commission, DEPTCODE
+ORDER BY SALARY ASC) AS RNK FROM EMPLOYEE)
+DELETE FROM DELETE_DUPLICATE WHERE RNK > 1;
+
+-- INTERVIEW:
+-- With DELETE_DUPLICATE AS
+-- (SELECT *, ROW_NUMBER()OVER(PARTITION BY COLUMN NAME ORDER BY COLUMN NAME) AS RNK FROM TABLE)
+-- DELETE FROM DELETE_DUPLICATE WHERE RNK > 1;
+
+-- SQL Functions:
+-- 1. UPPER
+-- Upper function is used to convert column value to upper case.
+
+SELECT *, UPPER(EMPFNAME) FROM EMPLOYEE;
+
+-- 2. LOWER
+-- Lower function is used to convert column value to lower case.
+
+SELECT *, LOWER(EMPFNAME) FROM EMPLOYEE;
+
+-- Plant_name -- T1,  Plant_naming -- T2 
+-- ETTS, DMS			Etts, Dms
+-- SELECT * FROM T1 JOIN T2 ON UPPER(T1.plant_name) = T2. UPPER(Plant_naming);
+
+-- 3. SUBSTRING
+-- It is used to extract the charcater from the string.
+-- It will take 3 arguments.
+-- Syntax: SUBSTRING(Column/string, start, end)
+
+SELECT *, SUBSTRING(DEPT, 1,3) FROM EMPLOYEE;
+
+-- RU_NUMBER -- RU588, RU666, RU899
+
+-- 4. DATALENGTH(), LEN():
+-- LEN(): This function is used to show the length of the data stored in the column.
+-- DATALENGTH(): This function will show the size of the particular column which has been defined on that column.
+
+CREATE TABLE DATA_L (NAME1 CHAR(10), NAME2 VARCHAR(10));
+INSERT INTO DATA_L VALUES ('ABC', 'XYZ'),('ABCD', 'UGUOGO');
+
+SELECT * FROM DATA_L;
+
+SELECT *, LEN(NAME1), DATALENGTH(NAME1) FROM DATA_L;
+SELECT *, LEN(NAME2), DATALENGTH(NAME2) FROM DATA_L;
+
+-- 5. CHARINDEX():
+-- It will find out the index position / number of particular character from the column.
+
+SELECT *, CHARINDEX('A', EMPFNAME) FROM EMPLOYEE as CHARINDEX;
+
+-- Find out the domain name?
+-- Or extract the company name from the email column?
+
+CREATE TABLE EMP_1 (ID INT, EMAIL VARCHAR(100));
+INSERT INTO EMP_1 VALUES(1, 'VIJAY@TCS.COM'),(2, 'PRAJAKTA@INFOSYS.COM'),(3, 'SHITAL@SAMSUNG.COM'),(4, 'NUTAN@TCS.COM'),
+(5, 'SUSHANT@COGNIZANT.COM');
+
+SELECT * FROM EMP_1;
+
+SELECT *, SUBSTRING(EMAIL, CHARINDEX('@', EMAIL)+1, LEN(EMAIL)) AS DOMAIN FROM EMP_1;
+
+SELECT *, CHARINDEX('@', EMAIL),LEN(EMAIL) FROM EMP_1;
+
+SELECT *, SUBSTRING(EMAIL, 1, CHARINDEX('@', EMAIL)-1) AS NAMES FROM EMP_1;
+    
+SELECT *, SUBSTRING(EMAIL, 1, CHARINDEX('@', EMAIL)-1) AS NAMES, 
+SUBSTRING(EMAIL, CHARINDEX('@', EMAIL)+1, LEN(EMAIL)) AS DOMAIN FROM EMP_1;
+
+-- amit#123
+-- FIRST_NAME#LAST_NAME
+
+SELECT SUBSTRING('amit#123', 1, CHARINDEX('#', 'amit#123')-1) AS NAMES;
+SELECT SUBSTRING('amit#123', CHARINDEX('#','amit#123')+1, LEN('amit#123')) AS ID;
+
+-- 6. CONCAT(), CONCAT_WS(), CONCAT WITH '+' : 
+-- Concat: This function is used to add two or more column together from a table.
+-- Syntax: Concat (col1, col2.......... coln)
+
+SELECT *, CONCAT(EMPFNAME, ' ', EMPLNAME, ' ', EmpCode) FROM EMPLOYEE;
+
+-- Concat_ws():
+-- Concat_ws: This function is used to add two or more column together from a table with seprator.
+-- Syntax: Concat_ws(seprator, col1, col2..... coln)
+
+SELECT *, CONCAT_WS(' ', EMPFNAME, EMPLNAME, EmpCode) FROM EMPLOYEE;
+
+SELECT *, CONCAT_WS('#',EMPFNAME, EMPLNAME) FROM EMPLOYEE;
+
+-- Concat with + :
+
+SELECT EmpFName + ' ' + EmpLName FROM EMPLOYEE;
+
+-- 7. TRIM, LTRIM, RTRIM:
+-- TRIM(): Trim function is used to remove blank leading(left) and trailing(right) spaces from the column.
+-- LTRIM(): LTRIM function is used to remove blank leading(left) spaces from the column.
+-- RTRIM(): RTRIM is used to remove blank trailing(right) spaces from the column.
+
+-- '   AMIT  '
+SELECT '      AMIT   ';
+SELECT TRIM('      AMIT   ');
+SELECT LTRIM('      AMIT   ');
+SELECT RTRIM('      AMIT   ');
+
+-- 8. ROUND():
+-- This function is used to round a number to a specfic number of decimal places.
+-- Syntax: Round(col/number, length)
+
+-- 55.6rp --56rp -- 52.1rp -- 52rp
+
+-- 0-4 -- keeps the same number
+-- 5-9 -- takes the next number
+-- 22.14 -- 22.10, 22.15 -- 22.20
+
+SELECT ROUND(22.14,1);
+SELECT ROUND(22.15,1);
+SELECT ROUND(23.76476,1);
+SELECT ROUND(23.76476,2);
+SELECT ROUND(23.76476,3);
+
+-- 9. REVERSE():
+-- This function is used to reverse a string.
+
+SELECT *, REVERSE(emplname) FROM EMPLOYEE;
+
+-- 10. REPLICATE():
+-- This function is used to repeat a string.
+
+SELECT *, REPLICATE(EMPFNAME, 2) FROM EMPLOYEE;
+
+-- 11. REPLACE():
+-- This is used to replace all substring within the string from the column.
+
+SELECT *, REPLACE(EMAIL,'@', '#') FROM EMP_1;
+SELECT *, REPLACE(EMAIL,'TCS', 'TML') FROM EMP_1;
+
+-- 12. CONVERT():
+-- Convert a value(of any type) into a specific data type.
+-- Syntax: CONVERT(data type, column)
+
+-- 13. CAST():
+-- Convert a value(of any type) into a specific data type.
+-- Syntax: CAST(Column as data type)
+
+SELECT CAST(19869 AS VARCHAR(100));
+SELECT CAST('ABC' AS INT);
+SELECT CAST(GETDATE() AS VARCHAR(100));
+SELECT CONVERT(VARCHAR(100), 986986896);
+SELECT CONVERT(VARCHAR(100), GETDATE());
+
+SELECT CAST(EMPCODE AS VARCHAR(100)) FROM EMPLOYEE;
+
+-- VIEWS:
+-- It is a copy of table or copy of query.
+-- Syntax: CREATE VIEW v_NAME AS SQL QUERY;
+
+-- How to create view?
+CREATE VIEW EMP_SAL AS SELECT * FROM EMPLOYEE WHERE Salary > 2500;
+
+-- How to extract the data from view?
+SELECT * FROM EMP_SAL;
+
+-- USE:
+-- View is mostly used when we perform analysis on multiple tables and writing queries, then to avoid the script to be
+-- writtern multiple times, on top of that we can create view.
+-- If we insert or update any data in our table, it will reflect in view.
+
+-- How to drop view?
+DROP VIEW V_EMP_SAL;
+
+-- How to see the script of the view?
+SP_HELPTEXT V_EMP_SAL;
+
+-- INDEX:
+-- Index are used to retrieve the data from the table more faster.
+-- Syntax: CREATE INDEX INDEX_NAMAE ON TABLE(COLUMN_NAME);
+-- 85 million -- 1m - 10 lakh
+
+SELECT EMPCODE FROM EMP_SAL ;--- use view 
+CREATE INDEX EMP_INDEX ON EMPLOYEE(EMPCODE);
+
+-- How to find out index?
+SP_HELP EMPLOYEE;
+
+-- How to drop index:
+DROP INDEX EMPLOYEE.EMP_INDEX;
+
+-- Two types of index:
+-- Clustered index:
+-- CREATE CLUSTERED INDEX IX_NAMEON TABLE(COLUMN_NAME);
+-- We can create only one clustered index on one table.
+
+-- Non clustered index:
+-- CREATE NONCLUSTERED INDEX IX_NAMEON TABLE(COLUMN_NAME);
+-- We can create multiple index on one table.
+
+-- STORED PROCEDURE:
+-- It is like function.
+-- It is block of code to perform certain actions.
+
+-- Syntax:
+-- CREATE PROCEDURE / PROC SP_NAME
+-- [PARAMETERS DATA TYPE]
+-- AS BEGIN
+-- SQL STATEMENT
+-- END;
+
+-- Two types of SP:
+-- Without parameters
+-- With parameters
+
+CREATE PROC SP_TWO_SELECT
+AS BEGIN
+SELECT * FROM EMP_1
+SELECT * FROM EMP
+END;
+
+EXEC SP_TWO_SELECT;
+
+-- UPDATE
+
+UPDATE EMPLOYEE SET Salary = 2400 WHERE EmpCode = 9878;
+
+CREATE PROC SAL_UPDATE (@SALARY INT, @EMPCODE INT)
+AS BEGIN
+UPDATE EMPLOYEE 
+SET Salary = @SALARY WHERE EmpCode = @EMPCODE
+END;
+
+SELECT * FROM EMPLOYEE;
+
+EXEC SAL_UPDATE 2900, 9369;
+
+CREATE PROC DEL_STST (@EMPCODE INT)
+AS BEGIN
+DELETE FROM EMPLOYEE WHERE EmpCode = @EMPCODE
+END;
+
+EXEC DEL_STST 9566 ;
+---------------------------------- **** ---------------------------------------
+--
+select*, COUNT(*) as Duplicate_Records from employee group by EmpCode,EmpFname,EmpLname,DEPT,state,DeptCode,salary,Email,Hiredate,Email 
+having COUNT(*)<1
+alter table employee drop state_
+select * from EMP
+drop table Employee
